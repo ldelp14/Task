@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Task</string>
+
+    <string name="status_task_todo">A fazer</string>
+    <string name="status_task_doing">Fazendo</string>
+    <string name="status_task_done">Feitas</string>
+</resources>
