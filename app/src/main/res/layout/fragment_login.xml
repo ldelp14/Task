@@ -32,6 +32,7 @@
         android:inputType="textEmailAddress"
         android:padding="10dp"
         android:layout_marginTop="4dp"
+        android:id="@+id/digiteEmail"
         android:background="@drawable/bg_edit_text"/>
 
     <TextView
@@ -47,6 +48,7 @@
         android:inputType="textPassword"
         android:hint="Digite sua senha"
         android:padding="10dp"
+        android:id="@+id/digiteSenha"
         android:layout_marginTop="4dp"
         android:background="@drawable/bg_edit_text"/>
 
