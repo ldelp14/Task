@@ -21,18 +21,21 @@ fun Fragment.initToolbar(toolbar:Toolbar){
 fun Fragment.showBottomSheet(
     titleDialog: Int? = null,
     titleButton: Int? = null,
-    message: Int,
+    message: String,
     onClick: () -> Unit={}
 ){
-    val bottomSheetDialog = BottomSheetDialog(requireContext())
+    val bottomSheetDialog = BottomSheetDialog(requireContext(),R.style.BottomSheetDialog)
     val binding: BottomSheetBinding =
         BottomSheetBinding.inflate(layoutInflater, null, false)
 
     binding.textviewTitle.text = getText(titleDialog ?: R.string.text_title_warning)
-    binding.textviewMessage.text = getText(message)
+    binding.textviewMessage.text = message
     binding.buttonOk.text = getText(titleButton ?: R.string.text_button_warning)
     binding.buttonOk.setOnClickListener {
         //Quando o botão buttonOk é clicado: O código executa o que foi definido no onClick. Depois, fecha o Bottom Sheet.
         onClick() //callback
         bottomSheetDialog.dismiss()
+}
+    bottomSheetDialog.setContentView(binding.root)
+    bottomSheetDialog.show()
 }

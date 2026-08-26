@@ -9,6 +9,7 @@ import android.widget.Toast
 import com.luigi.task.R
 import com.luigi.task.databinding.FragmentFormTaskBinding
 import com.luigi.task.util.initToolbar
+import com.luigi.task.util.showBottomSheet
 
 class FormTaskFragment : Fragment() {
     private var _binding: FragmentFormTaskBinding? = null
@@ -40,7 +41,7 @@ class FormTaskFragment : Fragment() {
         if(desc.isNotBlank()){
             Toast.makeText(requireContext(),"Tudo OK!", Toast.LENGTH_SHORT).show()
         }else{
-            Toast.makeText(requireContext(),"Informe sua nova Tarefa!", Toast.LENGTH_SHORT).show()
+            showBottomSheet(message = getString(R.string.description_empty_form_task_fragment))
         }
     }
 }

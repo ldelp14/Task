@@ -30,11 +30,9 @@
         android:layout_height="48dp"
         android:hint="Digite seu e-mail"
         android:inputType="textEmailAddress"
-        android:padding="10dp"
+        style="@style/EditTextTheme"
         android:layout_marginTop="4dp"
-        android:id="@+id/digiteEmail"
-        android:background="@drawable/bg_edit_text"/>
-
+        android:id="@+id/digiteEmail"></EditText>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -47,19 +45,18 @@
         android:layout_height="48dp"
         android:inputType="textPassword"
         android:hint="Digite sua senha"
-        android:padding="10dp"
+        style="@style/EditTextTheme"
         android:id="@+id/digiteSenha"
         android:layout_marginTop="4dp"
-        android:background="@drawable/bg_edit_text"/>
+        />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Login"
-        android:textColor="@color/color_default"
         app:backgroundTint="@null"
-        android:background="@drawable/bg_btn"
+        style="@style/ButtonTheme"
         android:layout_marginTop="16dp"
         />
 
@@ -73,7 +70,7 @@
             android:id="@+id/btnRegistrar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Criar Conta"
+            android:text="@string/criar_conta"
             android:layout_weight="1"
             android:textAlignment="textStart"
             android:textColor="@color/white"/>
@@ -82,7 +79,7 @@
             android:id="@+id/btnRecover"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Recuperar Conta"
+            android:text="@string/recuperar_conta"
             android:layout_weight="1"
             android:textAlignment="textEnd"
             android:textColor="@color/white"/>
@@ -101,7 +98,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:text="Luigi Ridolf Del Piero"
+        android:text="@string/nome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

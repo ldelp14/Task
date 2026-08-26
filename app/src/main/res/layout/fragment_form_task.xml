@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="Nova Tarefa"
+            android:text="@string/nova_tarefa"
             android:textColor="@color/white"
              />
 
@@ -35,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView"
-        android:text="Descrição"
+        android:text="@string/descricao"
         android:textColor="@color/white"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
@@ -47,9 +47,8 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginHorizontal="16dp"
-        android:background="@drawable/bg_edit_text"
-        android:hint="Informe sua nova Tarefa"
-        android:paddingHorizontal="12dp"
+        style="@style/EditTextTheme"
+        android:hint="@string/informe_sua_nova_tarefa"
         />
     <TextView
         android:id="@+id/textViewStatus"
@@ -57,7 +56,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
-        android:text="Status"
+        android:text="@string/status"
         android:textColor="@color/white"
         />
     <RadioGroup
@@ -72,7 +71,7 @@
             android:layout_width="88dp"
             android:layout_height="48dp"
             android:id="@+id/rbTodo"
-            android:text="A Fazer"
+            android:text="@string/a_fazer"
             android:checked="true"
             app:theme="@style/MyRadioButton"
             android:textColor="@color/white"/>
@@ -80,14 +79,14 @@
             android:layout_width="88dp"
             android:layout_height="48dp"
             android:id="@+id/rbDoing"
-            android:text="Fazendo"
+            android:text="@string/fazendo"
             app:theme="@style/MyRadioButton"
             android:textColor="@color/white"/>
         <RadioButton
             android:layout_width="88dp"
             android:layout_height="48dp"
             android:id="@+id/rbDone"
-            android:text="Feita"
+            android:text="@string/feita"
             app:theme="@style/MyRadioButton"
             android:textColor="@color/white"/>
     </RadioGroup>
@@ -100,9 +99,8 @@
         android:layout_marginHorizontal="16dp"
         app:backgroundTint="@color/white"
         app:cornerRadius="5dp"
-        android:text="Salvar"
-        android:textAllCaps="false"
-        android:textColor="@color/color_default"
+        android:text="@string/salvar"
+        style="@style/ButtonTheme"
         />
 
     <ProgressBar

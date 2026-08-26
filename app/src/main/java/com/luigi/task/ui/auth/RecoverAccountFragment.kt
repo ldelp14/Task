@@ -10,6 +10,7 @@ import com.luigi.task.R
 import com.luigi.task.databinding.FragmentLoginBinding
 import com.luigi.task.databinding.FragmentRecoverAccountBinding
 import com.luigi.task.util.initToolbar
+import com.luigi.task.util.showBottomSheet
 
 class RecoverAccountFragment : Fragment() {
 
@@ -42,7 +43,7 @@ class RecoverAccountFragment : Fragment() {
         if(email.isNotBlank()){
             Toast.makeText(requireContext(),"Tudo OK!", Toast.LENGTH_SHORT).show()
         }else{
-            Toast.makeText(requireContext(),"Preencha seu email!", Toast.LENGTH_SHORT).show()
+            showBottomSheet(message = getString(R.string.email_empty))
         }
     }
 
