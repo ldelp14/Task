@@ -35,17 +35,18 @@
                 app:layout_constraintTop_toTopOf="parent"/>
 
             <ImageButton
+                android:id="@+id/buttonBack"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:id="@+id/buttonBack"
                 android:background="@android:color/transparent"
+                android:contentDescription="@string/anterior"
                 android:src="@drawable/icback"
                 app:layout_constraintBottom_toBottomOf="@+id/buttonEditar"
+                app:layout_constraintEnd_toStartOf="@id/buttonDelete"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/buttonEditar"
-                app:layout_constraintEnd_toStartOf="@id/buttonDelete"
-                android:tint="@color/color_default"
-                android:contentDescription="@string/anterior"/>
+                app:tint="@color/color_default" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonDelete"
@@ -60,7 +61,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/buttonEditar"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintHorizontal_chainStyle="packed"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@id/buttonBack"
                 app:layout_constraintTop_toTopOf="@+id/buttonEditar" />
 
             <com.google.android.material.button.MaterialButton
@@ -91,25 +92,22 @@
                 android:textSize="12sp"
                 app:backgroundTint="@color/color_details"
                 app:layout_constraintBottom_toBottomOf="@+id/buttonEditar"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/buttonForward"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/buttonEditar"
                 app:layout_constraintTop_toTopOf="@+id/buttonEditar" />
 
             <ImageButton
+                android:id="@+id/buttonForward"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:layout_marginStart="112dp"
-                android:id="@+id/buttonForward"
                 android:background="@android:color/transparent"
                 android:src="@drawable/icforward"
                 app:layout_constraintBottom_toBottomOf="@+id/buttonEditar"
-                app:layout_constraintEnd_toEndOf="@id/constraintLayout2"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintTop_toTopOf="@id/buttonDetails"
-                app:layout_constraintStart_toEndOf="@id/buttonEditar"
-                android:tint="@color/color_default"
-                android:contentDescription="@string/proximo"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/buttonDetails"
+                app:layout_constraintTop_toTopOf="@id/buttonEditar"
+                app:tint="@color/color_default" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
