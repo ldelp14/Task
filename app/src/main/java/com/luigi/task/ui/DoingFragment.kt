@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.luigi.task.R
@@ -34,7 +35,7 @@ class DoingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initListeners()
 
-        initRecyclerViewTask(getTask())
+        initRecyclerViewTask()
     }
 
     private fun initListeners(){
@@ -43,20 +44,41 @@ class DoingFragment : Fragment() {
         }
     }
 
-    private fun initRecyclerViewTask(taskList: List<Task>){
-        taskAdapter = TaskAdapter(requireContext(),taskList)
-        binding.recyclerViewTask.layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerViewTask.setHasFixedSize(true)
+    private fun initRecyclerViewTask(){
+        taskAdapter = TaskAdapter(requireContext()){task,option -> optionSelected(task,option)}
 
-        binding.recyclerViewTask.adapter = taskAdapter
+        with(binding.recyclerViewTask){
+            layoutManager = LinearLayoutManager(requireContext())
+            setHasFixedSize(true)
+            adapter = taskAdapter
+        }
     }
 
+    private fun optionSelected(task: Task, option: Int) {
+        when (option) {
+            TaskAdapter.SELECT_REMOVER -> {
+                Toast.makeText(requireContext(), "Removendo ${task.description}", Toast.LENGTH_SHORT).show()
+            }
+            TaskAdapter.SELECT_EDIT -> {
+                Toast.makeText(requireContext(), "Editando ${task.description}", Toast.LENGTH_SHORT).show()
+            }
+            TaskAdapter.SELECT_DETAILS -> {
+                Toast.makeText(requireContext(), "Detalhes ${task.description}", Toast.LENGTH_SHORT).show()
+            }
+            TaskAdapter.SELECT_NEXT -> {
+                Toast.makeText(requireContext(), "Próximo", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
 
-    private fun getTask() = listOf(
-        Task("0", "Criar nova tela do app",Status.DOING),
-        Task("1","Validar informações na tela de login",Status.DOING),
-        Task("2","Adicionar nova funcionalidade no app",Status.DOING),
-        Task("3","Salvar token localmente",Status.DOING),
-        Task("2","Criar funcionalidade de logout no app",Status.DOING),
-    )
+    private fun getTask() {
+        val taskList = listOf(
+            Task("0", "Criar nova tela do app", Status.DOING),
+            Task("1", "Validar informações na tela de login", Status.DOING),
+            Task("2", "Adicionar nova funcionalidade no app", Status.DOING),
+            Task("3", "Salvar token localmente", Status.DOING),
+            Task("4", "Criar funcionalide de logout no app", Status.DOING),
+        )
+        taskAdapter.submitList(taskList)
+    }
 }
