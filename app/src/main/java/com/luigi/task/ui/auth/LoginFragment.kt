@@ -33,7 +33,7 @@ class LoginFragment : Fragment() {
             findNavController().navigate(R.id.action_global_homeFragment)
         }
         binding.btnRegistrar.setOnClickListener{
-            findNavController().navigate(R.id.action_splashFragment_to_authentication)
+            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
         binding.btnRecover.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_recoverAccountFragment)
