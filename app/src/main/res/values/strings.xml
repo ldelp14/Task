@@ -39,6 +39,12 @@
     <string name="text_message_dialog_delete">Aperte em confirmar para remover a tarefa.</string>
     <string name="text_button_dialog_confirm">Confirmar</string>
     <string name="error_generic">Ocorreu um erro!</string>
+    <string name="text_toolbar_update_form_task_fragment">Editando tarefa...</string>
+    <string name="account_not_registered_register_fragment">Nenhuma conta encontrada com este e-mail</string>
+    <string name="invalid_email_register_fragment">Insira um e-mail válido.</string>
+    <string name="invalid_password_register_fragment">Senha inválida, tente novamente.</string>
+    <string name="email_in_user_register_fragment"> Este e-mail já está em uso.</string>
+    <string name="strong_password_register_fragment">Insira uma senha mais forte.</string>
     <string name="text_list_task_empty">Nenhuma tarefa cadastrada</string>
     <string name="text_list_task_load">Aguarde, estamos carregando as informações!</string>
     <string name="text_delete_sucess_task">Tarefa removida com sucesso.</string>

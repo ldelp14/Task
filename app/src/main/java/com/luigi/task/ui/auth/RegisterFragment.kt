@@ -8,10 +8,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
+import com.luigi.task.util.hideKeyboard
 import com.google.firebase.auth.FirebaseAuth
 import com.luigi.task.R
 import com.luigi.task.databinding.FragmentRegisterBinding
 import com.luigi.task.databinding.FragmentSplashBinding
+import com.luigi.task.util.FirebaseHelper
 import com.luigi.task.util.initToolbar
 import com.luigi.task.util.showBottomSheet
 
@@ -48,7 +50,7 @@ class RegisterFragment : Fragment() {
                         findNavController().navigate(R.id.action_global_homeFragment)
                     }else{
                         binding.progressBar.isVisible = false
-                        Toast.makeText(requireContext(),task.exception?.message,Toast.LENGTH_SHORT).show()
+                        showBottomSheet(message = getString(FirebaseHelper.validError(task.exception?.message.toString())))
                     }
                 }
         }catch (e: Exception){
@@ -66,6 +68,7 @@ class RegisterFragment : Fragment() {
         val email = binding.digiteEmail.text.toString().trim()
         val senha = binding.digiteSenha.text.toString().trim()
         if(email.isNotBlank()){
+            hideKeyboard()
             if(senha.isNotBlank()){
                 binding.progressBar.isVisible = false
                 registerUser(email,senha)

@@ -6,9 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
+import com.google.firebase.auth.FirebaseAuth
 import com.luigi.task.R
 import com.luigi.task.databinding.FragmentLoginBinding
 import com.luigi.task.databinding.FragmentRecoverAccountBinding
+import com.luigi.task.util.FirebaseHelper
+import com.luigi.task.util.hideKeyboard
 import com.luigi.task.util.initToolbar
 import com.luigi.task.util.showBottomSheet
 
@@ -16,6 +20,8 @@ class RecoverAccountFragment : Fragment() {
 
     private var _binding: FragmentRecoverAccountBinding?=null
     private val binding get() = _binding!!
+
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,6 +33,7 @@ class RecoverAccountFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        auth = FirebaseHelper.getAuth()
         initToolbar(binding.toolbar)
         initListener()
     }
@@ -41,9 +48,28 @@ class RecoverAccountFragment : Fragment() {
         val email = binding.digiteEmail.text.toString().trim()
 
         if(email.isNotBlank()){
+            hideKeyboard()
+
+            binding.progressBar.isVisible=true
             Toast.makeText(requireContext(),"Tudo OK!", Toast.LENGTH_SHORT).show()
         }else{
             showBottomSheet(message = getString(R.string.email_empty))
+        }
+    }
+
+    private fun recoverAccountUser(email: String ){
+        try {
+            auth.sendPasswordResetEmail(email)
+                .addOnCompleteListener { task ->
+                    binding.progressBar.isVisible = false
+                    if (task.isSuccessful){
+                        showBottomSheet(message = "Um e-mail foi enviado para sua caixa de entrada com o l...")
+                    }else{
+                        showBottomSheet( message = getString( FirebaseHelper.validError( error = task.exception?.message.toString() ) ) )
+                    }
+                }
+        }catch ( e: Exception){
+            Toast.makeText(requireContext(),e.message.toString(),Toast.LENGTH_SHORT).show()
         }
     }
 

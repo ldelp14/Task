@@ -6,18 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.luigi.task.R
 import com.luigi.task.databinding.FragmentLoginBinding
+import com.luigi.task.ui.BaseFragment
+import com.luigi.task.util.FirebaseHelper
 import com.luigi.task.util.showBottomSheet
 
-class LoginFragment : Fragment() {
+class LoginFragment : BaseFragment() {
 
     private var _binding: FragmentLoginBinding?=null
     private val binding get() = _binding!!
 
-    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,13 +32,12 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view, savedInstanceState)
 
-        auth = FirebaseAuth.getInstance()
         initListener()
     }
 
     private fun checkAuth(){
         try{
-            val currentUser = auth.currentUser
+            val currentUser = FirebaseHelper.getAuth().currentUser
 
             if (currentUser != null){
                 findNavController().navigate(R.id.action_global_homeFragment)
@@ -64,6 +65,9 @@ class LoginFragment : Fragment() {
         val senha = binding.digiteSenha.text.toString().trim()
         if(email.isNotBlank()){
             if(senha.isNotBlank()){
+
+                hideKeyboard()
+                binding.progressBar.isVisible = true
                 loginUser(email,senha)
             }else{
                 Toast.makeText(requireContext(),"Preencha a senha!", Toast.LENGTH_SHORT).show()
@@ -79,12 +83,13 @@ class LoginFragment : Fragment() {
     }
     private fun loginUser(email: String, password: String){
         try{
-            auth.signInWithEmailAndPassword(email,password).addOnCompleteListener {
+            FirebaseHelper.getAuth().signInWithEmailAndPassword(email,password).addOnCompleteListener {
                 task ->
                 if(task.isSuccessful){
                     findNavController().navigate(R.id.action_global_homeFragment)
                 }else{
-                    Toast.makeText(requireContext(),task.exception?.message,Toast.LENGTH_SHORT).show()
+                    binding.progressBar.isVisible=false
+                    showBottomSheet(message = getString(FirebaseHelper.validError(task.exception?.message.toString())))
                 }
             }
         }catch (e: Exception){

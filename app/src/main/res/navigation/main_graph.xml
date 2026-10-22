@@ -63,5 +63,10 @@
         android:id="@+id/formTaskFragment"
         android:name="com.luigi.task.ui.FormTaskFragment"
         android:label="fragment_form_task"
-        tools:layout="@layout/fragment_form_task" />
+        tools:layout="@layout/fragment_form_task">
+    <argument
+        android:name="task"
+        app:argType="com.luigi.task.data.model.Task"
+        app:nullable="true" />
+    </fragment>
 </navigation>
