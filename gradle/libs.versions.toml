@@ -8,8 +8,8 @@ appcompat = "1.7.1"
 material = "1.13.0"
 activity = "1.13.0"
 constraintlayout = "2.2.1"
-navigationFragmentKtx = "2.9.8"
-navigationUiKtx = "2.9.8"
+navigationFragmentKtx = "2.10.2"
+navigationUiKtx = "2.10.2"
 kotlin="2.3.10"
 
 
