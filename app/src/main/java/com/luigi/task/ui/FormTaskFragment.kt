@@ -10,7 +10,6 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.luigi.task.util.hideKeyboard
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
@@ -94,7 +93,6 @@ class FormTaskFragment : Fragment() {
     private fun validateData(){
         val description = binding.editTextDescricao.text.toString().trim()
         if(description.isNotBlank()){
-            hideKeyboard()
             binding.progressBar.isVisible = true
 
             if(newTask) task = Task()

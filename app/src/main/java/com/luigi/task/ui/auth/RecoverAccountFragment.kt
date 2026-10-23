@@ -12,7 +12,6 @@ import com.luigi.task.R
 import com.luigi.task.databinding.FragmentLoginBinding
 import com.luigi.task.databinding.FragmentRecoverAccountBinding
 import com.luigi.task.util.FirebaseHelper
-import com.luigi.task.util.hideKeyboard
 import com.luigi.task.util.initToolbar
 import com.luigi.task.util.showBottomSheet
 
@@ -48,8 +47,6 @@ class RecoverAccountFragment : Fragment() {
         val email = binding.digiteEmail.text.toString().trim()
 
         if(email.isNotBlank()){
-            hideKeyboard()
-
             binding.progressBar.isVisible=true
             Toast.makeText(requireContext(),"Tudo OK!", Toast.LENGTH_SHORT).show()
         }else{

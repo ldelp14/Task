@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
-import com.luigi.task.util.hideKeyboard
 import com.google.firebase.auth.FirebaseAuth
 import com.luigi.task.R
 import com.luigi.task.databinding.FragmentRegisterBinding
@@ -68,7 +67,6 @@ class RegisterFragment : Fragment() {
         val email = binding.digiteEmail.text.toString().trim()
         val senha = binding.digiteSenha.text.toString().trim()
         if(email.isNotBlank()){
-            hideKeyboard()
             if(senha.isNotBlank()){
                 binding.progressBar.isVisible = false
                 registerUser(email,senha)
