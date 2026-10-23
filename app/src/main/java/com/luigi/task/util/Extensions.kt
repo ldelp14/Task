@@ -9,14 +9,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.luigi.task.R
 import com.luigi.task.databinding.BottomSheetBinding
 
-fun Fragment.hideKeyboard() {
-    val view = activity?.currentFocus ?: view
-    if (view != null) {
-        val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
-        imm?.hideSoftInputFromWindow(view.windowToken, 0)
-    }
-}
-
 fun Fragment.initToolbar(toolbar:Toolbar){
     (activity as AppCompatActivity).setSupportActionBar(toolbar)
     (activity as AppCompatActivity).title=""
